@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Choirfinder</string>
+    <string name="permission_request">서비스의 필요한 권한입니다.\n권한에 동의해주세요.</string>
+</resources>
