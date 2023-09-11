@@ -1,5 +1,6 @@
 package com.indong.choirfinder.activity
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
@@ -13,17 +14,33 @@ class StartActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.startlayout)
+        //Note 당분간은 권한에 따른 내용이 없기 때문에 주석처리 바로 실행
         checkPermission()
     }
 
     private fun checkPermission(){
-        val permission = mutableMapOf<String, String>()
+        //Note 당분간은 권한에 따른 내용이 없기 때문에 주석처리 바로 실행
+       /*
+       val permission = mutableMapOf<String, String>()
         //permission["camera"]=Manifest.permission.CAMERA
 
         val denied = permission.count{ContextCompat.checkSelfPermission(this, it.value) == PackageManager.PERMISSION_DENIED}
         if(denied > 0) {
             requestPermissions(permission.values.toTypedArray(), REQUEST_PERMISSIONS)
         }
+        else
+        */
+        run {
+            initiateMainActivity()
+        }
+    }
+
+    private fun initiateMainActivity()
+    {
+        val startIntent = Intent(this,MainActivity::class.java)
+        startActivity(startIntent)
+        finish()
     }
 
     override fun onRequestPermissionsResult(
@@ -45,6 +62,10 @@ class StartActivity : AppCompatActivity(){
                 if(it == PackageManager.PERMISSION_DENIED) {
                     Toast.makeText(applicationContext, getText(R.string.permission_request), Toast.LENGTH_SHORT).show()
                     finish()
+                }
+                else
+                {
+                    initiateMainActivity()
                 }
             }
         }
