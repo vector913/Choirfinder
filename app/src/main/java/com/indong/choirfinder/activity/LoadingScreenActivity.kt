@@ -14,11 +14,11 @@ class LoadingScreenActivity : AppCompatActivity(){
         //Note set Splash Image!
         setContentView(R.layout.splashlayout)
 
-        Handler(Looper.getMainLooper()).postDelayed({
+       // Handler(Looper.getMainLooper()).postDelayed({
             val startIntent = Intent(this,StartActivity::class.java)
             startActivity(startIntent)
             finish()
-        },3000)
+        //},3000)
     }
 
 }
